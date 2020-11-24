@@ -29,5 +29,6 @@ pkgs.stdenv.mkDerivation rec {
 
   meta = with pkgs.stdenv.lib; {
     description = "Send quick and easy text messages with `mblaze`";
+    license = licenses.mit;
   };
 }
