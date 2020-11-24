@@ -5,7 +5,7 @@
 }) {}) }:
 
 pkgs.stdenv.mkDerivation rec {
-  pname = "mtext";
+  pname = "mtxt";
   version = "1.0.0";
 
   src = ./.;
@@ -13,16 +13,16 @@ pkgs.stdenv.mkDerivation rec {
   nativeBuildInputs = [ pkgs.makeWrapper ];
 
   buildPhase = ''
-    patchShebangs mtext
+    patchShebangs mtxt
   '';
 
   installPhase = ''
     mkdir -p $out/bin
-    mv mtext $out/bin/
+    mv mtxt $out/bin/
   '';
 
   postFixup = ''
-    wrapProgram $out/bin/mtext --prefix PATH : ${pkgs.stdenv.lib.makeBinPath [
+    wrapProgram $out/bin/mtxt --prefix PATH : ${pkgs.stdenv.lib.makeBinPath [
       pkgs.mblaze
     ]}
   '';
