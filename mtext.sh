@@ -27,8 +27,15 @@ set -- "${positionals[@]}" # restore positional parameters
 
 if [[ $# -gt 0 ]]; then
   bodyf=$(mktemp)
-  printf "%s" "$@" > "$bodyf"
+
+  printf "%s" "$1" >> "$bodyf"
+  shift
+  if [[ $# -gt 0 ]]; then
+    printf " %s" "$@" >> "$bodyf"
+  fi
+
   mcom -body "$bodyf" -send "${opts[@]}"
+
   rm "$bodyf"
 else
   mcom "${opts[@]}"
