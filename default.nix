@@ -29,6 +29,7 @@ pkgs.stdenv.mkDerivation rec {
 
   meta = with pkgs.stdenv.lib; {
     description = "Send quick and easy text messages with `mblaze`";
+    homepage = "https://github.com/JustinLovinger/mtxt";
     license = licenses.mit;
   };
 }
