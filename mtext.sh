@@ -1,4 +1,5 @@
 #!/bin/bash
+send=1
 opts=()
 positionals=()
 
@@ -10,6 +11,10 @@ while [[ $# -gt 0 ]]; do
         positionals+=("$1")
         shift
       done
+      ;;
+    -nosend)
+      send=0
+      shift
       ;;
     -*)
       opts+=("$1" "$2")
@@ -34,7 +39,10 @@ if [[ $# -gt 0 ]]; then
     printf " %s" "$@" >> "$bodyf"
   fi
 
-  mcom -body "$bodyf" -send "${opts[@]}"
+  if [[ $send = 1 ]]; then
+    opts+=("-send")
+  fi
+  mcom -body "$bodyf" "${opts[@]}"
 
   rm "$bodyf"
 else
