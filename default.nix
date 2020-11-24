@@ -13,12 +13,12 @@ pkgs.stdenv.mkDerivation rec {
   nativeBuildInputs = [ pkgs.makeWrapper ];
 
   buildPhase = ''
-    patchShebangs mtext.sh
+    patchShebangs mtext
   '';
 
   installPhase = ''
     mkdir -p $out/bin
-    mv mtext.sh $out/bin/mtext
+    mv mtext $out/bin/
   '';
 
   postFixup = ''
