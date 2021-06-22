@@ -22,12 +22,12 @@ pkgs.stdenv.mkDerivation rec {
   '';
 
   postFixup = ''
-    wrapProgram $out/bin/mtxt --prefix PATH : ${pkgs.stdenv.lib.makeBinPath [
+    wrapProgram $out/bin/mtxt --prefix PATH : ${pkgs.lib.makeBinPath [
       pkgs.mblaze
     ]}
   '';
 
-  meta = with pkgs.stdenv.lib; {
+  meta = with pkgs.lib; {
     description = "Send quick and easy text messages with `mblaze`";
     homepage = "https://github.com/JustinLovinger/mtxt";
     license = licenses.mit;
